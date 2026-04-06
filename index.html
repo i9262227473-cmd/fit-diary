@@ -2903,14 +2903,16 @@ async function startup(){
   }
 
   // Загружаем базы из Supabase (фоново)
-  loadFoodsDB();
-  loadExercisesDB();
-  if(!currentUser && !isGuest()) {
+loadFoodsDB();
+loadExercisesDB();
+
+if(!currentUser && !isGuest()){
     renderAuth();
-     } else {
-  render();
-  try{ regSW(); }catch(e){}
+} else {
+    render();
 }
+
+try{ regSW(); } catch(e){}
 
 startup();
 </script>
