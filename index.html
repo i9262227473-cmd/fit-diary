@@ -2907,7 +2907,8 @@ async function startup(){
   loadExercisesDB();
   if(!currentUser && !isGuest()) {
     renderAuth();
-     render();
+     } else {
+  render();
   try{ regSW(); }catch(e){}
 }
 
