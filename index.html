@@ -2905,8 +2905,9 @@ async function startup(){
   // Загружаем базы из Supabase (фоново)
   loadFoodsDB();
   loadExercisesDB();
-
-  render();
+  if(!currentUser && !isGuest()) {
+    renderAuth();
+     render();
   try{ regSW(); }catch(e){}
 }
 
