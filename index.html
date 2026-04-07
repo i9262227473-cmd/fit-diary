@@ -247,124 +247,12 @@ async function initAuth(){
   return false;
 }
 const BUILTIN_DB=[
-  // ── Яйца ──
-  ["Яичница",160,13,12,1,null],["Яйцо варёное",155,13,11,1,55],["Яйцо сырое",157,13,11,1,55],
-  ["Яичный белок",52,11,0,1,30],["Яичный желток",322,16,27,4,18],["Омлет",185,12,14,2,null],
-  // ── Молочные ──
-  ["Творог 0%",71,18,0,3,null],["Творог 5%",121,17,5,3,null],["Творог 9%",159,17,9,3,null],
-  ["Творог 18%",232,15,18,3,null],["Exponenta High-Pro",71,14,0,5,140],
-  ["Кефир 1%",40,3,1,4,null],["Молоко 2.5%",52,3,3,5,null],["Молоко 3.2%",60,3,3,5,null],
-  ["Сыр твёрдый",360,24,29,0,null],["Сыр плавленый",270,16,22,3,null],
-  ["Сметана 15%",158,3,15,3,null],["Йогурт натуральный",68,5,2,8,null],
-  // ── Птица ──
+  // Минимальный fallback если Supabase недоступен
   ["Куриная грудка варёная",137,25,3,0,null],
-  ["Куриная грудка жареная",197,28,9,0,null],
-  ["Куриная грудка запечённая",165,30,5,0,null],
-  ["Куриная грудка",165,31,4,0,null],
-  ["Куриное бедро",215,22,14,0,null],
-  ["Куриная голень",195,21,12,0,null],
-  ["Курица жареная",240,22,16,0,null],
-  ["Курица отварная",170,25,8,0,null],
-  ["Индейка грудка",157,30,3,0,null],
-  // ── Говядина ──
-  ["Говядина",250,26,17,0,null],
-  ["Говядина жареная",285,27,19,0,null],
-  ["Говядина тушёная",215,26,12,0,null],
-  ["Говядина запечённая",220,28,12,0,null],
-  ["Котлета говяжья",220,15,15,6,80],
-  ["Тёплый салат с говядиной",145,14,7,7,null],
-  ["Шашлык говяжий",220,25,13,0,null],
-  ["Люля говяжий",280,20,20,3,null],
-  // ── Свинина ──
-  ["Свинина",355,17,31,0,null],
-  ["Шашлык свиной",280,22,20,0,null],
-  ["Люля свиной",310,18,25,3,null],
-  ["Котлета свиная",260,14,18,6,80],
-  // ── Баранина ──
-  ["Баранина",315,17,27,0,null],
-  ["Люля из баранины",295,17,23,3,null],
-  ["Шашлык из баранины",270,20,19,0,null],
-  // ── Смешанные котлеты ──
-  ["Котлета куриная",190,16,12,5,80],
-  ["Котлета куриная домашняя",195,17,12,4,80],
-  ["Котлеты говяжьи домашние",225,15,15,5,80],
-  // ── Рыба ──
-  ["Горбуша",142,21,7,0,null],["Лосось",206,20,13,0,null],["Тунец консервы",96,22,1,0,null],
-  ["Тунец свежий",144,24,5,0,null],["Треска",82,18,1,0,null],["Минтай",72,16,1,0,null],
-  ["Скумбрия",262,18,20,0,null],["Сёмга",208,20,13,0,null],
-  // ── Крупы и гарниры ──
-  ["Гречка варёная",110,4,1,20,null],["Гречка сухая",313,12,3,62,null],
-  ["Рис белый варёный",130,3,0,28,null],
-  ["Рис отварной",130,3,0,28,null],
-  ["Картофель варёный",82,2,0,17,120],
-  ["Картофель жареный",192,2,9,24,null],
-  ["Картофельное пюре",95,2,4,14,null],
-  ["Макароны варёные",138,5,1,27,null],
-  ["Макароны с маслом",165,5,5,27,null],
-  ["Макароны с соусом",155,6,4,24,null],
-  ["Овсянка варёная",88,3,2,15,null],["Овсянка сухая",342,12,7,59,null],
-  // ── Хлеб ──
-  ["Хлеб белый",265,8,3,49,25],["Хлеб чёрный",207,7,1,40,25],
-  ["Хлеб цельнозерновой",237,9,3,43,25],["Блин",233,7,8,33,55],
-  // ── Салаты ──
-  ["Салат Оливье",197,6,14,12,null],
-  ["Оливье с колбасой",210,5,15,13,null],
-  ["Оливье с курицей",180,8,12,11,null],
-  ["Селёдка под шубой",165,5,11,13,null],
-  ["Крабовый салат",110,8,5,10,null],
-  ["Царский салат с креветками",130,12,7,6,null],
-  ["Салат с рукколой и креветками",120,13,6,5,null],
-  ["Салат с жареными баклажанами",95,2,7,8,null],
-  ["Салат с хрустящими баклажанами",145,3,10,12,null],
-  ["Тёплый салат с говядиной",145,14,7,7,null],
-  ["Греческий салат",95,2,7,7,null],
-  ["Салат Цезарь с курицей",140,11,9,6,null],
-  ["Салат из свежих овощей",35,1,2,4,null],
-  // ── Супы ──
-  ["Борщ",50,3,2,6,null],
-  ["Борщ домашний",65,4,3,7,null],
-  ["Суп куриный",46,4,2,4,null],
-  ["Куриный суп с лапшой",55,5,2,6,null],
-  ["Харчо",95,6,4,10,null],
-  ["Довга (суп из кефира)",48,3,2,5,null],
-  ["Щи",40,2,2,5,null],
-  ["Солянка",75,5,4,5,null],
-  ["Уха",45,5,2,3,null],
-  // ── Кавказская кухня ──
-  ["Хинкали говяжьи",200,12,9,20,50],
-  ["Хинкали куриные",175,11,7,20,50],
-  ["Хинкали свиные",215,11,12,20,50],
-  ["Долма (голубцы в виноградных листьях)",150,10,8,11,30],
-  ["Голубцы с говядиной",130,9,7,10,null],
-  ["Голубцы домашние",130,9,7,10,null],
-  // ── Блюда с соусами ──
-  ["Говядина терияки",175,20,7,9,null],
-  ["Курица в соусе карри",165,18,8,6,null],
-  ["Курица в сливочном соусе",210,20,13,4,null],
-  // ── Запечённое и тушёное ──
-  ["Лазанья",170,10,8,16,null],
-  ["Лазанья мясная",185,11,9,16,null],
-  // ── Овощи ──
-  ["Брокколи",34,3,0,7,null],["Огурец",15,1,0,3,120],["Помидор",18,1,0,4,130],
-  ["Морковь",41,1,0,10,80],["Болгарский перец",31,1,0,7,150],
-  ["Баклажан жареный",105,1,8,8,null],
-  ["Баклажан запечённый",55,1,3,7,null],
-  // ── Фрукты ──
-  ["Яблоко",52,0,0,14,180],["Банан",89,1,0,23,120],
-  ["Апельсин",47,1,0,12,200],["Груша",57,0,0,15,170],["Клубника",32,1,0,8,15],
-  // ── Орехи ──
-  ["Грецкий орех",654,15,65,7,5],["Миндаль",579,21,50,22,1],["Арахис",567,26,49,16,1],
-  // ── Масла ──
-  ["Масло сливочное",748,1,82,1,null],["Масло растительное",884,0,100,0,null],
-  // ── Готовые блюда ──
-  ["Пельмени",275,12,12,27,15],
-  ["Вареники с картошкой",210,5,5,37,null],
-  ["Вареники с творогом",215,8,6,34,null],
-  // ── Спортпит ──
-  ["Протеин сывороточный",380,75,4,8,null],
-  // ── Прочее ──
-  ["Мёд",304,0,0,82,null],["Сахар",387,0,0,100,null],
-  ["Кофе чёрный",2,0,0,0,null],["Чай без сахара",1,0,0,0,null],
+  ["Яйцо варёное",155,13,11,1,55],
+  ["Творог 5%",121,17,5,3,null],
+  ["Гречка варёная",110,4,1,20,null],
+  ["Овсянка варёная",88,3,2,15,null],
 ];
 const EX_IMGS={"Жим гантелей лёжа":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Bench_press_2.jpg/200px-Bench_press_2.jpg","Тяга верхнего блока":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Lat_pulldown.jpg/200px-Lat_pulldown.jpg","Тяга горизонтального блока":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Seated_cable_row.jpg/200px-Seated_cable_row.jpg","Тяга гантели одной рукой":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/One-arm-dumbbell-row-everton.jpg/200px-One-arm-dumbbell-row-everton.jpg","Подъём гантелей на бицепс":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Dumbbell_Bicep_Curl.jpg/200px-Dumbbell_Bicep_Curl.jpg","Жим гантелей сидя":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Seated_Dumbbell_Press.jpg/200px-Seated_Dumbbell_Press.jpg","Махи в стороны":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Lateral_raise.jpg/200px-Lateral_raise.jpg","Скручивания":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Crunches.jpg/200px-Crunches.jpg","Планка":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Plank_pose.jpg/200px-Plank_pose.jpg","Разгибание ног в тренажёре":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leg_extension.jpg/200px-Leg_extension.jpg","Сгибание ног лёжа":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Lying_Leg_Curl.jpg/200px-Lying_Leg_Curl.jpg","Подъём на икры сидя":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Seated_calf_raise.jpg/200px-Seated_calf_raise.jpg","Подъём штанги на бицепс":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Barbell_curl.jpg/200px-Barbell_curl.jpg","Молотки с гантелями":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Hammer_curl.jpg/200px-Hammer_curl.jpg"};
 function exE(n){if(n.includes('Жим'))return'🏋️';if(n.includes('Тяга'))return'💪';if(n.includes('Подъём'))return'💪';if(n.includes('Скручивания')||n.includes('Планка'))return'🤸';if(n.includes('Велотренажёр'))return'🚴';return'🏋️';}
@@ -554,9 +442,8 @@ function saveProfile(){try{localStorage.setItem(PROFK,JSON.stringify({profile:S.
 
 // ── AI API (Groq) ──
 const AIKEY_K='fit-aikey-v1';
-const DEFAULT_AI_KEY='sk-6a01c7472fec46d1b93db06accb15fc0';
-function getAIKey(){try{return localStorage.getItem(AIKEY_K)||DEFAULT_AI_KEY;}catch(e){return DEFAULT_AI_KEY;}}
-function setAIKey(k){try{localStorage.setItem(AIKEY_K,k);}catch(e){}}
+function getAIKey(){return true;}
+function setAIKey(k){}
 
 // Универсальный вызов Groq API
 // Гостевой режим
@@ -566,20 +453,14 @@ function setGuest(){localStorage.setItem(GUEST_KEY,JSON.stringify({expires:Date.
 function clearGuest(){localStorage.removeItem(GUEST_KEY);}
 
 async function aiCall(messages, maxTokens=600){
-  const key=getAIKey();
-  if(!key) throw new Error('NO_KEY');
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),20000);
   try{
-    const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+    const r=await fetch('http://localhost:3000/ai',{
       method:'POST',
       signal:controller.signal,
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
-      body:JSON.stringify({
-        model:'llama-3.3-70b-versatile',
-        max_tokens:maxTokens,
-        messages
-      })
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({messages,max_tokens:maxTokens})
     });
     clearTimeout(timer);
     if(!r.ok){const e=await r.text();throw new Error(e);}
@@ -592,31 +473,53 @@ async function aiCall(messages, maxTokens=600){
   }
 }
 
-// Сканирование этикетки через Groq Vision (Llama 4 Scout)
+// Сжатие изображения перед отправкой в AI
+function compressImage(file, maxSize=1024, quality=0.85){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=e=>{
+      const img=new Image();
+      img.onload=()=>{
+        const canvas=document.createElement('canvas');
+        let w=img.width,h=img.height;
+        // Уменьшаем если больше maxSize
+        if(w>maxSize||h>maxSize){
+          if(w>h){h=Math.round(h*maxSize/w);w=maxSize;}
+          else{w=Math.round(w*maxSize/h);h=maxSize;}
+        }
+        canvas.width=w;canvas.height=h;
+        const ctx=canvas.getContext('2d');
+        ctx.drawImage(img,0,0,w,h);
+        const dataUrl=canvas.toDataURL('image/jpeg',quality);
+        resolve(dataUrl.split(',')[1]);
+      };
+      img.onerror=reject;
+      img.src=e.target.result;
+    };
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// Сканирование этикетки через backend
 async function analyzeLabel(b64){
-  const key=getAIKey();
-  if(!key) throw new Error('NO_KEY');
   const controller=new AbortController();
-  const timer=setTimeout(()=>controller.abort(),20000);
+  const timer=setTimeout(()=>controller.abort(),30000);
   try{
-    const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+    const r=await fetch('http://localhost:3000/ai-vision',{
       method:'POST',
       signal:controller.signal,
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
-      body:JSON.stringify({
-        model:'meta-llama/llama-4-scout-17b-16e-instruct',
-        max_tokens:300,
-        messages:[{role:'user',content:[
-          {type:'image_url',image_url:{url:'data:image/jpeg;base64,'+b64}},
-          {type:'text',text:'Прочитай этикетку продукта на фото. Найди КБЖУ на 100г. Ответь ТОЛЬКО JSON без markdown: {"name":"название продукта","calories":99,"protein":20,"fat":0,"carbs":4.8}'}
-        ]}]
-      })
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({b64})
     });
     clearTimeout(timer);
-    if(!r.ok){const e=await r.text();throw new Error(e);}
+    if(!r.ok)throw new Error(await r.text());
     const d=await r.json();
     const txt=d.choices?.[0]?.message?.content||'{}';
-    return JSON.parse(txt.replace(/```json|```/g,'').trim());
+    const clean=txt.replace(/```json|```/g,'').trim();
+    const match=clean.match(/\{[^}]+\}/);
+    if(!match)throw new Error('No JSON');
+    return JSON.parse(match[0]);
   }catch(e){
     clearTimeout(timer);
     if(e.name==='AbortError')throw new Error('TIMEOUT');
@@ -669,7 +572,7 @@ function render(){
 }
 function rHeader(){
   const aw=getAW();
-  const hasKey=!!getAIKey();
+  const hasKey=true;
   const isGuestMode=!currentUser&&isGuest();
   const userName=currentUser?.user_metadata?.name||currentUser?.email?.split('@')[0]||'';
   const wrap=document.createDocumentFragment();
@@ -682,8 +585,8 @@ function rHeader(){
       ),
       h('div',{style:{display:'flex',gap:'6px',alignItems:'center',marginTop:'4px'}},
         h('button',{onClick:openAISettings,style:{background:'rgba(255,255,255,.15)',border:'none',borderRadius:'10px',padding:'7px 10px',cursor:'pointer',display:'flex',alignItems:'center',gap:'4px',fontFamily:'inherit'}},
-          h('span',{style:{fontSize:'14px'}},hasKey?'🤖':'⚙️'),
-          h('span',{style:{fontSize:'10px',color:hasKey?'#86efac':'#7a9cc8',fontWeight:'600'}},hasKey?'AI':'Ключ')
+          h('span',{style:{fontSize:'14px'}},'🤖'),
+          h('span',{style:{fontSize:'10px',color:'#86efac',fontWeight:'600'}},'AI')
         ),
         isGuestMode
           ? h('button',{onClick:()=>{clearGuest();render();},style:{background:'#2563eb',border:'none',borderRadius:'10px',padding:'6px 10px',cursor:'pointer',fontFamily:'inherit',color:'#fff',fontSize:'10px',fontWeight:'700',lineHeight:'1.3'}},'Войти /\nРег-ция')
@@ -977,21 +880,21 @@ function buildFoodModal(){
     e.target.value='';
     fm.scanning=true;fm.scanErr='';updateStatus();
     camBtn.textContent='⏳';camBtn.disabled=true;
-    const reader=new FileReader();
-    reader.onload=async()=>{
-      try{
-        const b64=reader.result.split(',')[1];
-        const res=await analyzeLabel(b64);
-        f.name=res.name||f.name;nameInp.value=f.name;
-        f.cal100=String(res.calories||'');f.prot100=String(res.protein||'');
-        f.fat100=String(res.fat||'');f.carbs100=String(res.carbs||'');
-        fm.sugg=[];fm.avgW=null;
-        updateSuggestions();updateManualFields();
-      }catch(err){fm.scanErr='Не удалось прочитать. Введи вручную.';}
-      fm.scanning=false;camBtn.textContent='📷';camBtn.disabled=false;
-      updateStatus();updatePreview();updateSaveBtn();
-    };
-    reader.readAsDataURL(file);
+    try{
+      // Сжимаем изображение перед отправкой
+      const b64=await compressImage(file,1024,0.85);
+      const res=await analyzeLabel(b64);
+      f.name=res.name||f.name;nameInp.value=f.name;
+      f.cal100=String(res.calories||'');f.prot100=String(res.protein||'');
+      f.fat100=String(res.fat||'');f.carbs100=String(res.carbs||'');
+      fm.sugg=[];fm.avgW=null;
+      updateSuggestions();updateManualFields();
+    }catch(err){
+      console.error('Scan error:',err);
+      fm.scanErr='Не удалось прочитать. Введи вручную.';
+    }
+    fm.scanning=false;camBtn.textContent='📷';camBtn.disabled=false;
+    updateStatus();updatePreview();updateSaveBtn();
   };
 
   const camBtn=document.createElement('button');
@@ -1603,7 +1506,7 @@ ${workoutList}
   })
   .catch(err=>{
     body.innerHTML='';body.style.cssText='padding:20px;text-align:center';
-    const isNoKey=err.message==='NO_KEY';
+    const isNoKey=false;
     const errIcon=document.createElement('div');errIcon.style.fontSize='36px';errIcon.textContent=isNoKey?'🔑':'😔';
     const errMsg=document.createElement('div');
     errMsg.style.cssText='font-size:14px;color:var(--red);margin-top:10px;margin-bottom:8px;font-weight:600';
@@ -2623,7 +2526,7 @@ async function generateAIPlan(form){
 
     // Показываем объяснение почему не сгенерировался план
     setTimeout(()=>{
-      const isNoKey=err.message==='NO_KEY';
+      const isNoKey=false;
       const isTimeout=err.message==='TIMEOUT';
       const msg=isNoKey
         ?'Профиль сохранён! КБЖУ рассчитаны по формуле.\n\nДля AI плана тренировок нужен ключ Groq — нажми ⚙️ в шапке.'
